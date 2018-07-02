@@ -53,8 +53,6 @@ class CustomImageView: UIImageView {
                 return
             }
             
-            // TO DO: check for HTTP response status of 200 meaning OK
-            
             guard let imageData = data else { return }
             
             let photoImage = UIImage(data: imageData)

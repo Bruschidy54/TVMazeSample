@@ -13,23 +13,15 @@ class EpisodeTableViewCell: UITableViewCell {
     
     @IBOutlet var episodeImageView: CustomImageView!
     @IBOutlet var nameLabel: UILabel!
-    
     @IBOutlet var networkLabel: UILabel!
-    
     @IBOutlet var airtimeLabel: UILabel!
     @IBOutlet var catagoryLabel: UILabel!
     
     var episode: Episode? {
         didSet {
-            
             guard let episode = episode else { return }
-            
             displayInformation(for: episode)
-            
-            
         }
-        
-        
     }
     
     
@@ -43,9 +35,7 @@ class EpisodeTableViewCell: UITableViewCell {
         
         nameLabel.attributedText = attributedTitle
         
-//        if let episodeImage = episode.image?.medium {
-//            episodeImageView.loadImage(urlString: episodeImage)
-//        } else
+
             if let showImage = episode.show?.image?.medium {
             episodeImageView.loadImage(urlString: showImage)
         }

@@ -12,6 +12,7 @@ struct Episode: Codable {
     
     struct JsonImage: Codable {
         let medium: String?
+        let original: String?
     }
     
     struct Show: Codable {
@@ -28,6 +29,7 @@ struct Episode: Codable {
         let rating: Rating?
         let network: Network?
         let name: String?
+        let url: String
         let genres: [String]
         let language: String?
         let summary: String?
@@ -38,8 +40,6 @@ struct Episode: Codable {
     let name: String?
     let url : String?
     let airstamp: String?
-    let airtime: String?
-    let airdate: String?
     let runtime: Double?
     let summary: String?
     let season: Int?

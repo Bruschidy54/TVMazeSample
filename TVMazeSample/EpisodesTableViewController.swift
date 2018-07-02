@@ -20,17 +20,17 @@ class EpisodesTableViewController: UITableViewController, SetTimeDelegate {
     
     let searchingMessage = "Searching Shows"
     let cellId = "episodeCell"
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         
         setupUI()
         
         queryEpisodes()
         
         tableView.reloadData()
- 
+        
     }
     
     func setTime(date: Date) {
@@ -49,18 +49,14 @@ class EpisodesTableViewController: UITableViewController, SetTimeDelegate {
         tableView.setNeedsLayout()
         tableView.layoutIfNeeded()
         tableView.reloadData()
-
+        
     }
     
- 
+    
     
     private func setupUI() {
         
-        
-        
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
-        
-        
         view.addGestureRecognizer(tap)
         navigationController?.navigationBar.addGestureRecognizer(tap)
         
@@ -71,7 +67,6 @@ class EpisodesTableViewController: UITableViewController, SetTimeDelegate {
         
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 160
-        
         tableView.separatorColor = .darkBlue
         
         navigationItem.title = "Now Playing"
@@ -99,35 +94,38 @@ class EpisodesTableViewController: UITableViewController, SetTimeDelegate {
         dateFormatter.dateFormat = "yyyy-MM-dd"
         
         let dateString = dateFormatter.string(from: Date())
-
+        
         let url = URL(string: "http://api.tvmaze.com/schedule?country=US&date=\(dateString)")
         
         
         if let url = url {
-        
-        URLSession.shared.dataTask(with: url) { (data, response, error) in
             
-            // TO DO: Handle errors and different responses
-            
-            if let err = error {
-                print("Error retrieving shows from TVMaze", err)
-            }
-            
-            guard let jsonData = data else { return }
-            
-            do {
-                 let decoder = JSONDecoder()
-                self.totalEpisodes = try decoder.decode([Episode].self, from: jsonData)
-                print(self.totalEpisodes.count)
-                self.timeFilteredEpisodes = self.totalEpisodes.filter { $0.airInterval?.contains(Date()) == true }
-                print(self.timeFilteredEpisodes.count)
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
+            URLSession.shared.dataTask(with: url) { (data, response, error) in
+                
+                if let err = error {
+                    print("Error retrieving shows from TVMaze", err)
+                    let alertController = UIAlertController(title: "Error retrieving shows. Please try again later.", message: err.localizedDescription, preferredStyle: .alert)
+                    
+                    let cancelAction = UIAlertAction(title: "OK", style: .cancel) { (action) in
+                    }
+                    alertController.addAction(cancelAction)
+                    self.present(alertController, animated: true)
+                    return
                 }
-            } catch let err {
-                print("Error decoding episodes from JSON", err)
-            }
-        }.resume()
+                
+                guard let jsonData = data else { return }
+                
+                do {
+                    let decoder = JSONDecoder()
+                    self.totalEpisodes = try decoder.decode([Episode].self, from: jsonData)
+                    self.timeFilteredEpisodes = self.totalEpisodes.filter { $0.airInterval?.contains(Date()) == true }
+                    DispatchQueue.main.async {
+                        self.tableView.reloadData()
+                    }
+                } catch let err {
+                    print("Error decoding episodes from JSON", err)
+                }
+                }.resume()
         }
         
         
@@ -137,20 +135,19 @@ class EpisodesTableViewController: UITableViewController, SetTimeDelegate {
         searchBar.endEditing(true)
     }
     
-
-
-
+    
+    
+    
     // MARK: - Table view data source
     
     
     override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         
-        // TO DO: Change text when search is active
         let label = UILabel()
         if searchBar.text?.isEmpty == false {
             label.text = "No matching shows or channels..."
         } else {
-        label.text = "No shows playing at this time..."
+            label.text = "No shows playing at this time..."
         }
         label.textColor = .white
         label.textAlignment = .center
@@ -161,49 +158,49 @@ class EpisodesTableViewController: UITableViewController, SetTimeDelegate {
     override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return (timeFilteredEpisodes.count == 0 && !searchActive) || (searchFilteredEpisodes.count == 0 && searchActive) ? 150 : 0
     }
-
-
+    
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if searchBar.text?.isEmpty == false {
             return searchFilteredEpisodes.count
         } else {
-        return timeFilteredEpisodes.count
+            return timeFilteredEpisodes.count
         }
     }
-
-
+    
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! EpisodeTableViewCell
-
+        
         if searchBar.text?.isEmpty == false {
             let episode = searchFilteredEpisodes[indexPath.row]
             cell.episode = episode
         } else {
-        let episode = timeFilteredEpisodes[indexPath.row]
-        cell.episode = episode
+            let episode = timeFilteredEpisodes[indexPath.row]
+            cell.episode = episode
         }
         cell.selectionStyle = .none
         
         cell.setNeedsUpdateConstraints()
         cell.updateConstraints()
         cell.layoutIfNeeded()
-
+        
         
         
         return cell
     }
-
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath) as! EpisodeTableViewCell
         performSegue(withIdentifier: "ShowDetailSegue", sender: cell)
     }
     
     
-
-
-
+    
+    
+    
     // MARK: - Navigation
-
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowDetailSegue" {
             let showDetailController = segue.destination as! ShowDetailViewController
@@ -216,5 +213,5 @@ class EpisodesTableViewController: UITableViewController, SetTimeDelegate {
             navigationItem.backBarButtonItem = backItem 
         }
     }
-
+    
 }

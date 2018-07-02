@@ -12,7 +12,6 @@ extension EpisodesTableViewController: UISearchBarDelegate {
     
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        
         searchActive = true
     }
     
