@@ -78,7 +78,7 @@ class ShowDetailViewController: UIViewController {
         let attributedShowNameRating = NSMutableAttributedString(string: "\(showName)", attributes: [NSAttributedStringKey.font:UIFont.boldSystemFont(ofSize: 17)])
         
         if let rating = episode.show?.rating?.average {
-            attributedShowNameRating.append(NSAttributedString(string: "- \(rating)/10", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 16), NSAttributedStringKey.strokeColor: UIColor.gray]))
+            attributedShowNameRating.append(NSAttributedString(string: " - \(rating)/10", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 16), NSAttributedStringKey.strokeColor: UIColor.gray]))
         }
         
         showNameRatingLabel.attributedText = attributedShowNameRating
@@ -105,7 +105,7 @@ class ShowDetailViewController: UIViewController {
     private func displayEpisodeInformation() {
         guard let episode = episode else { return }
         if let episodeImage = episode.image?.medium {
-            showImageView.loadImage(urlString: episodeImage)
+            episodeImageView.loadImage(urlString: episodeImage)
         }
         
         let episodeName = episode.name ?? ""
