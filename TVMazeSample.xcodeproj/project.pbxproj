@@ -7,13 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CD16FED620E337B400A71E34 /* Episode.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD16FED520E337B400A71E34 /* Episode.swift */; };
+		CD16FED820E44E2500A71E34 /* EpisodeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD16FED720E44E2500A71E34 /* EpisodeTableViewCell.swift */; };
+		CD16FEDA20E4506200A71E34 /* CustomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD16FED920E4506200A71E34 /* CustomImageView.swift */; };
+		CD16FEDC20E6BC8500A71E34 /* UIColor+theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD16FEDB20E6BC8500A71E34 /* UIColor+theme.swift */; };
 		CD74EA6920E2B9D200E10390 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD74EA6820E2B9D200E10390 /* AppDelegate.swift */; };
-		CD74EA6B20E2B9D200E10390 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD74EA6A20E2B9D200E10390 /* ViewController.swift */; };
 		CD74EA6E20E2B9D300E10390 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD74EA6C20E2B9D300E10390 /* Main.storyboard */; };
 		CD74EA7020E2B9D700E10390 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD74EA6F20E2B9D700E10390 /* Assets.xcassets */; };
 		CD74EA7320E2B9D700E10390 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD74EA7120E2B9D700E10390 /* LaunchScreen.storyboard */; };
 		CD74EA7E20E2B9D700E10390 /* TVMazeSampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD74EA7D20E2B9D700E10390 /* TVMazeSampleTests.swift */; };
 		CD74EA8920E2B9D700E10390 /* TVMazeSampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD74EA8820E2B9D700E10390 /* TVMazeSampleUITests.swift */; };
+		CD74EA9720E31EBC00E10390 /* EpisodesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD74EA9620E31EBC00E10390 /* EpisodesTableViewController.swift */; };
+		CD74ED6820E8239C00BD122B /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD74ED6720E8239C00BD122B /* Extensions.swift */; };
+		CD74ED6A20E829A500BD122B /* SetTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD74ED6920E829A500BD122B /* SetTimeViewController.swift */; };
+		CD74ED6C20E97F9C00BD122B /* ShowDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD74ED6B20E97F9C00BD122B /* ShowDetailViewController.swift */; };
+		CD74ED6E20E9888100BD122B /* EpisodesTableViewController+UISearchBarDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD74ED6D20E9888100BD122B /* EpisodesTableViewController+UISearchBarDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,9 +42,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CD16FED520E337B400A71E34 /* Episode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Episode.swift; sourceTree = "<group>"; };
+		CD16FED720E44E2500A71E34 /* EpisodeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeTableViewCell.swift; sourceTree = "<group>"; };
+		CD16FED920E4506200A71E34 /* CustomImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImageView.swift; sourceTree = "<group>"; };
+		CD16FEDB20E6BC8500A71E34 /* UIColor+theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+theme.swift"; sourceTree = "<group>"; };
 		CD74EA6520E2B9D200E10390 /* TVMazeSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TVMazeSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD74EA6820E2B9D200E10390 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		CD74EA6A20E2B9D200E10390 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		CD74EA6D20E2B9D300E10390 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CD74EA6F20E2B9D700E10390 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CD74EA7220E2B9D700E10390 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -47,6 +58,11 @@
 		CD74EA8420E2B9D700E10390 /* TVMazeSampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TVMazeSampleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD74EA8820E2B9D700E10390 /* TVMazeSampleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVMazeSampleUITests.swift; sourceTree = "<group>"; };
 		CD74EA8A20E2B9D700E10390 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CD74EA9620E31EBC00E10390 /* EpisodesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodesTableViewController.swift; sourceTree = "<group>"; };
+		CD74ED6720E8239C00BD122B /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		CD74ED6920E829A500BD122B /* SetTimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetTimeViewController.swift; sourceTree = "<group>"; };
+		CD74ED6B20E97F9C00BD122B /* ShowDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDetailViewController.swift; sourceTree = "<group>"; };
+		CD74ED6D20E9888100BD122B /* EpisodesTableViewController+UISearchBarDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EpisodesTableViewController+UISearchBarDelegate.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +90,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CD16FEDD20E6C2F300A71E34 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				CD16FED920E4506200A71E34 /* CustomImageView.swift */,
+				CD16FEDB20E6BC8500A71E34 /* UIColor+theme.swift */,
+				CD74ED6720E8239C00BD122B /* Extensions.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		CD74EA5C20E2B9D200E10390 = {
 			isa = PBXGroup;
 			children = (
@@ -97,12 +123,18 @@
 		CD74EA6720E2B9D200E10390 /* TVMazeSample */ = {
 			isa = PBXGroup;
 			children = (
+				CD16FEDD20E6C2F300A71E34 /* Utils */,
 				CD74EA6820E2B9D200E10390 /* AppDelegate.swift */,
-				CD74EA6A20E2B9D200E10390 /* ViewController.swift */,
 				CD74EA6C20E2B9D300E10390 /* Main.storyboard */,
 				CD74EA6F20E2B9D700E10390 /* Assets.xcassets */,
 				CD74EA7120E2B9D700E10390 /* LaunchScreen.storyboard */,
 				CD74EA7420E2B9D700E10390 /* Info.plist */,
+				CD74EA9620E31EBC00E10390 /* EpisodesTableViewController.swift */,
+				CD16FED520E337B400A71E34 /* Episode.swift */,
+				CD16FED720E44E2500A71E34 /* EpisodeTableViewCell.swift */,
+				CD74ED6920E829A500BD122B /* SetTimeViewController.swift */,
+				CD74ED6B20E97F9C00BD122B /* ShowDetailViewController.swift */,
+				CD74ED6D20E9888100BD122B /* EpisodesTableViewController+UISearchBarDelegate.swift */,
 			);
 			path = TVMazeSample;
 			sourceTree = "<group>";
@@ -256,8 +288,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CD74EA6B20E2B9D200E10390 /* ViewController.swift in Sources */,
+				CD74ED6A20E829A500BD122B /* SetTimeViewController.swift in Sources */,
+				CD16FED620E337B400A71E34 /* Episode.swift in Sources */,
+				CD16FED820E44E2500A71E34 /* EpisodeTableViewCell.swift in Sources */,
+				CD74EA9720E31EBC00E10390 /* EpisodesTableViewController.swift in Sources */,
+				CD16FEDC20E6BC8500A71E34 /* UIColor+theme.swift in Sources */,
 				CD74EA6920E2B9D200E10390 /* AppDelegate.swift in Sources */,
+				CD74ED6C20E97F9C00BD122B /* ShowDetailViewController.swift in Sources */,
+				CD16FEDA20E4506200A71E34 /* CustomImageView.swift in Sources */,
+				CD74ED6E20E9888100BD122B /* EpisodesTableViewController+UISearchBarDelegate.swift in Sources */,
+				CD74ED6820E8239C00BD122B /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

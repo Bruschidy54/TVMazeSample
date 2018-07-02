@@ -14,6 +14,22 @@ class CustomImageView: UIImageView {
     
     var lastURLUsedToLoadImage: String?
     
+    override var intrinsicContentSize: CGSize {
+        
+        if let myImage = self.image {
+            let myImageWidth = myImage.size.width
+            let myImageHeight = myImage.size.height
+            let myViewHeight = self.frame.size.height
+            
+            let ratio = myViewHeight/myImageHeight
+            let scaledWidth = myImageWidth * ratio
+            
+            return CGSize(width: scaledWidth, height: myViewHeight)
+        }
+        
+        return CGSize(width: -1.0, height: -1.0)
+    }
+    
     func loadImage(urlString: String) {
         
         lastURLUsedToLoadImage = urlString
