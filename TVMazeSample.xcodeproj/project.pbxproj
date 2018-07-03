@@ -20,6 +20,8 @@
 		CD74ED6A20E829A500BD122B /* SetTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD74ED6920E829A500BD122B /* SetTimeViewController.swift */; };
 		CD74ED6C20E97F9C00BD122B /* ShowDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD74ED6B20E97F9C00BD122B /* ShowDetailViewController.swift */; };
 		CD74ED6E20E9888100BD122B /* EpisodesTableViewController+UISearchBarDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD74ED6D20E9888100BD122B /* EpisodesTableViewController+UISearchBarDelegate.swift */; };
+		CD74EDCC20EC14A700BD122B /* TVMzeSampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD74EDCB20EC14A700BD122B /* TVMzeSampleTests.swift */; };
+		CD74EDD420EC14C200BD122B /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD74EDD320EC14C200BD122B /* APIClient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,6 +33,13 @@
 			remoteInfo = TVMazeSample;
 		};
 		CD74EA8520E2B9D700E10390 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CD74EA5D20E2B9D200E10390 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CD74EA6420E2B9D200E10390;
+			remoteInfo = TVMazeSample;
+		};
+		CD74EDCE20EC14A700BD122B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = CD74EA5D20E2B9D200E10390 /* Project object */;
 			proxyType = 1;
@@ -57,6 +66,10 @@
 		CD74ED6920E829A500BD122B /* SetTimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetTimeViewController.swift; sourceTree = "<group>"; };
 		CD74ED6B20E97F9C00BD122B /* ShowDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDetailViewController.swift; sourceTree = "<group>"; };
 		CD74ED6D20E9888100BD122B /* EpisodesTableViewController+UISearchBarDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EpisodesTableViewController+UISearchBarDelegate.swift"; sourceTree = "<group>"; };
+		CD74EDC920EC14A700BD122B /* TVMzeSampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TVMzeSampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CD74EDCB20EC14A700BD122B /* TVMzeSampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVMzeSampleTests.swift; sourceTree = "<group>"; };
+		CD74EDCD20EC14A700BD122B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CD74EDD320EC14C200BD122B /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +94,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		CD74EDC620EC14A700BD122B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -90,6 +110,7 @@
 				CD16FED920E4506200A71E34 /* CustomImageView.swift */,
 				CD16FEDB20E6BC8500A71E34 /* UIColor+theme.swift */,
 				CD74ED6720E8239C00BD122B /* Extensions.swift */,
+				CD74EDD320EC14C200BD122B /* APIClient.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -98,6 +119,7 @@
 			isa = PBXGroup;
 			children = (
 				CD74EA6720E2B9D200E10390 /* TVMazeSample */,
+				CD74EDCA20EC14A700BD122B /* TVMzeSampleTests */,
 				CD74EA6620E2B9D200E10390 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -108,6 +130,7 @@
 				CD74EA6520E2B9D200E10390 /* TVMazeSample.app */,
 				CD74EA7920E2B9D700E10390 /* TVMazeSampleTests.xctest */,
 				CD74EA8420E2B9D700E10390 /* TVMazeSampleUITests.xctest */,
+				CD74EDC920EC14A700BD122B /* TVMzeSampleTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -115,20 +138,53 @@
 		CD74EA6720E2B9D200E10390 /* TVMazeSample */ = {
 			isa = PBXGroup;
 			children = (
+				CD74EDD720EC17CC00BD122B /* Episodes-Shows */,
+				CD74EDD620EC17AA00BD122B /* Models */,
+				CD74EDD520EC179100BD122B /* Storyboards */,
 				CD16FEDD20E6C2F300A71E34 /* Utils */,
 				CD74EA6820E2B9D200E10390 /* AppDelegate.swift */,
-				CD74EA6C20E2B9D300E10390 /* Main.storyboard */,
-				CD74EA6F20E2B9D700E10390 /* Assets.xcassets */,
-				CD74EA7120E2B9D700E10390 /* LaunchScreen.storyboard */,
-				CD74EA7420E2B9D700E10390 /* Info.plist */,
-				CD74EA9620E31EBC00E10390 /* EpisodesTableViewController.swift */,
-				CD16FED520E337B400A71E34 /* Episode.swift */,
-				CD16FED720E44E2500A71E34 /* EpisodeTableViewCell.swift */,
 				CD74ED6920E829A500BD122B /* SetTimeViewController.swift */,
+				CD74EA6F20E2B9D700E10390 /* Assets.xcassets */,
+				CD74EA7420E2B9D700E10390 /* Info.plist */,
+			);
+			path = TVMazeSample;
+			sourceTree = "<group>";
+		};
+		CD74EDCA20EC14A700BD122B /* TVMzeSampleTests */ = {
+			isa = PBXGroup;
+			children = (
+				CD74EDCB20EC14A700BD122B /* TVMzeSampleTests.swift */,
+				CD74EDCD20EC14A700BD122B /* Info.plist */,
+			);
+			path = TVMzeSampleTests;
+			sourceTree = "<group>";
+		};
+		CD74EDD520EC179100BD122B /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				CD74EA6C20E2B9D300E10390 /* Main.storyboard */,
+				CD74EA7120E2B9D700E10390 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		CD74EDD620EC17AA00BD122B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				CD16FED520E337B400A71E34 /* Episode.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		CD74EDD720EC17CC00BD122B /* Episodes-Shows */ = {
+			isa = PBXGroup;
+			children = (
+				CD16FED720E44E2500A71E34 /* EpisodeTableViewCell.swift */,
+				CD74EA9620E31EBC00E10390 /* EpisodesTableViewController.swift */,
 				CD74ED6B20E97F9C00BD122B /* ShowDetailViewController.swift */,
 				CD74ED6D20E9888100BD122B /* EpisodesTableViewController+UISearchBarDelegate.swift */,
 			);
-			path = TVMazeSample;
+			path = "Episodes-Shows";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -187,6 +243,24 @@
 			productReference = CD74EA8420E2B9D700E10390 /* TVMazeSampleUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		CD74EDC820EC14A700BD122B /* TVMzeSampleTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CD74EDD020EC14A700BD122B /* Build configuration list for PBXNativeTarget "TVMzeSampleTests" */;
+			buildPhases = (
+				CD74EDC520EC14A700BD122B /* Sources */,
+				CD74EDC620EC14A700BD122B /* Frameworks */,
+				CD74EDC720EC14A700BD122B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CD74EDCF20EC14A700BD122B /* PBXTargetDependency */,
+			);
+			name = TVMzeSampleTests;
+			productName = TVMzeSampleTests;
+			productReference = CD74EDC920EC14A700BD122B /* TVMzeSampleTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -202,9 +276,14 @@
 					};
 					CD74EA7820E2B9D700E10390 = {
 						CreatedOnToolsVersion = 9.4;
+						LastSwiftMigration = 0940;
 						TestTargetID = CD74EA6420E2B9D200E10390;
 					};
 					CD74EA8320E2B9D700E10390 = {
+						CreatedOnToolsVersion = 9.4;
+						TestTargetID = CD74EA6420E2B9D200E10390;
+					};
+					CD74EDC820EC14A700BD122B = {
 						CreatedOnToolsVersion = 9.4;
 						TestTargetID = CD74EA6420E2B9D200E10390;
 					};
@@ -226,6 +305,7 @@
 				CD74EA6420E2B9D200E10390 /* TVMazeSample */,
 				CD74EA7820E2B9D700E10390 /* TVMazeSampleTests */,
 				CD74EA8320E2B9D700E10390 /* TVMazeSampleUITests */,
+				CD74EDC820EC14A700BD122B /* TVMzeSampleTests */,
 			);
 		};
 /* End PBXProject section */
@@ -255,6 +335,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		CD74EDC720EC14A700BD122B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -267,6 +354,7 @@
 				CD16FED820E44E2500A71E34 /* EpisodeTableViewCell.swift in Sources */,
 				CD74EA9720E31EBC00E10390 /* EpisodesTableViewController.swift in Sources */,
 				CD16FEDC20E6BC8500A71E34 /* UIColor+theme.swift in Sources */,
+				CD74EDD420EC14C200BD122B /* APIClient.swift in Sources */,
 				CD74EA6920E2B9D200E10390 /* AppDelegate.swift in Sources */,
 				CD74ED6C20E97F9C00BD122B /* ShowDetailViewController.swift in Sources */,
 				CD16FEDA20E4506200A71E34 /* CustomImageView.swift in Sources */,
@@ -289,6 +377,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		CD74EDC520EC14A700BD122B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CD74EDCC20EC14A700BD122B /* TVMzeSampleTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -301,6 +397,11 @@
 			isa = PBXTargetDependency;
 			target = CD74EA6420E2B9D200E10390 /* TVMazeSample */;
 			targetProxy = CD74EA8520E2B9D700E10390 /* PBXContainerItemProxy */;
+		};
+		CD74EDCF20EC14A700BD122B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CD74EA6420E2B9D200E10390 /* TVMazeSample */;
+			targetProxy = CD74EDCE20EC14A700BD122B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -479,6 +580,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 84NJ8T743J;
 				INFOPLIST_FILE = TVMazeSampleTests/Info.plist;
@@ -489,6 +591,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = dlb.TVMazeSampleTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TVMazeSample.app/TVMazeSample";
@@ -500,6 +603,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 84NJ8T743J;
 				INFOPLIST_FILE = TVMazeSampleTests/Info.plist;
@@ -556,6 +660,46 @@
 			};
 			name = Release;
 		};
+		CD74EDD120EC14A700BD122B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 84NJ8T743J;
+				INFOPLIST_FILE = TVMzeSampleTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = dlb.TVMzeSampleTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TVMazeSample.app/TVMazeSample";
+			};
+			name = Debug;
+		};
+		CD74EDD220EC14A700BD122B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 84NJ8T743J;
+				INFOPLIST_FILE = TVMzeSampleTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = dlb.TVMzeSampleTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TVMazeSample.app/TVMazeSample";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -591,6 +735,15 @@
 			buildConfigurations = (
 				CD74EA9420E2B9D700E10390 /* Debug */,
 				CD74EA9520E2B9D700E10390 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CD74EDD020EC14A700BD122B /* Build configuration list for PBXNativeTarget "TVMzeSampleTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CD74EDD120EC14A700BD122B /* Debug */,
+				CD74EDD220EC14A700BD122B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

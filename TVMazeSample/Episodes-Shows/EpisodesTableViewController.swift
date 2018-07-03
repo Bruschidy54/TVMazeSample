@@ -95,40 +95,36 @@ class EpisodesTableViewController: UITableViewController, SetTimeDelegate {
         
         let dateString = dateFormatter.string(from: Date())
         
-        let url = URL(string: "http://api.tvmaze.com/schedule?country=US&date=\(dateString)")
+        guard let url = URL(string: "http://api.tvmaze.com/schedule?country=US&date=\(dateString)") else { return }
         
+        let session = URLSession(configuration: .default)
+        let apiClient = APIClient(session: session)
         
-        if let url = url {
+        apiClient.get(url: url) { (data, error) in
+            if let err = error {
+                print("Error retrieving shows from TVMaze", err)
+                let alertController = UIAlertController(title: "Error retrieving shows. Please try again later.", message: err.localizedDescription, preferredStyle: .alert)
+                
+                let cancelAction = UIAlertAction(title: "OK", style: .cancel) { (action) in
+                }
+                alertController.addAction(cancelAction)
+                self.present(alertController, animated: true)
+                return
+            }
             
-            URLSession.shared.dataTask(with: url) { (data, response, error) in
-                
-                if let err = error {
-                    print("Error retrieving shows from TVMaze", err)
-                    let alertController = UIAlertController(title: "Error retrieving shows. Please try again later.", message: err.localizedDescription, preferredStyle: .alert)
-                    
-                    let cancelAction = UIAlertAction(title: "OK", style: .cancel) { (action) in
-                    }
-                    alertController.addAction(cancelAction)
-                    self.present(alertController, animated: true)
-                    return
+            guard let jsonData = data else { return }
+            
+            do {
+                let decoder = JSONDecoder()
+                self.totalEpisodes = try decoder.decode([Episode].self, from: jsonData)
+                self.timeFilteredEpisodes = self.totalEpisodes.filter { $0.airInterval?.contains(Date()) == true }
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
                 }
-                
-                guard let jsonData = data else { return }
-                
-                do {
-                    let decoder = JSONDecoder()
-                    self.totalEpisodes = try decoder.decode([Episode].self, from: jsonData)
-                    self.timeFilteredEpisodes = self.totalEpisodes.filter { $0.airInterval?.contains(Date()) == true }
-                    DispatchQueue.main.async {
-                        self.tableView.reloadData()
-                    }
-                } catch let err {
-                    print("Error decoding episodes from JSON", err)
-                }
-                }.resume()
+            } catch let err {
+                print("Error decoding episodes from JSON", err)
+            }
         }
-        
-        
     }
     
     @objc private func dismissKeyboard() {
