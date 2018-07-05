@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ShowDetailViewController: UIViewController {
+class EpisodeDetailViewController: UIViewController {
     
     @IBOutlet var containerStackView: UIStackView!
     @IBOutlet var showView: UIView!
@@ -26,6 +26,8 @@ class ShowDetailViewController: UIViewController {
     @IBOutlet var episodeNameLabel: UILabel!
     @IBOutlet var episodeURLButton: UIButton!
     @IBOutlet var episodeDescriptionView: UITextView!
+    @IBOutlet var episodeDescriptionHeightConstraint: NSLayoutConstraint!
+    
     
     var episode: Episode?
     
@@ -100,6 +102,8 @@ class ShowDetailViewController: UIViewController {
         
         let showDescription = episode.show?.summary ?? ""
         showDescriptionView.text = showDescription
+        
+        showDescriptionView.sizeToFit()
     }
     
     private func displayEpisodeInformation() {
@@ -109,7 +113,7 @@ class ShowDetailViewController: UIViewController {
         }
         
         let episodeName = episode.name ?? ""
-        var episodeNameLabelString = NSMutableAttributedString(string: "", attributes: nil)
+        let episodeNameLabelString = NSMutableAttributedString(string: "", attributes: nil)
         
         if let seasonNumber = episode.season {
             episodeNameLabelString.append(NSAttributedString(string: "Season \(seasonNumber) ", attributes: [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 17)]))
@@ -143,6 +147,13 @@ class ShowDetailViewController: UIViewController {
         
         let episodeDescription = episode.summary ?? ""
         episodeDescriptionView.text = episodeDescription
+        
+        episodeDescriptionView.sizeToFit()
+
+        if episodeDescription.isEmpty {
+            episodeDescriptionHeightConstraint.constant = 0
+        }
+        
     }
     
     private func setupUI() {

@@ -55,7 +55,6 @@ class SetTimeViewController: UIViewController {
     
     private func setupUI() {
         view.backgroundColor = .lightBlue
-        view.alpha = 0.95
         
         view.addSubview(datePicker)
         datePicker.anchor(top: nil, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 8, paddingLeft: 16, paddingBottom: 0, paddingRight: 16, width: 0, height: 275)

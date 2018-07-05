@@ -26,13 +26,8 @@ class TVMzeSampleTests: XCTestCase {
     
     func testGetRequestWithURL() {
         
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
         
-        let dateString = dateFormatter.string(from: Date())
-        
-        
-        guard let url = URL(string: "http://api.tvmaze.com/schedule?country=US&date=\(dateString)") else {
+        guard let url = URL(string: apiUrlString) else {
             fatalError("URL can't be empty")
         }
         
@@ -49,13 +44,7 @@ class TVMzeSampleTests: XCTestCase {
         let dataTask = MockURLSessionDataTask()
         session.nextDataTask = dataTask
         
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        
-        let dateString = dateFormatter.string(from: Date())
-        
-        
-        guard let url = URL(string: "http://api.tvmaze.com/schedule?country=US&date=\(dateString)") else {
+        guard let url = URL(string: apiUrlString) else {
             fatalError("URL can't be empty")
         }
         
@@ -73,13 +62,7 @@ class TVMzeSampleTests: XCTestCase {
         
         var actualData: Data?
         
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        
-        let dateString = dateFormatter.string(from: Date())
-        
-        
-        guard let url = URL(string: "http://api.tvmaze.com/schedule?country=US&date=\(dateString)") else {
+        guard let url = URL(string: apiUrlString) else {
             fatalError("URL can't be empty")
         }
         

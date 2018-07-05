@@ -18,10 +18,12 @@
 		CD74EA9720E31EBC00E10390 /* EpisodesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD74EA9620E31EBC00E10390 /* EpisodesTableViewController.swift */; };
 		CD74ED6820E8239C00BD122B /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD74ED6720E8239C00BD122B /* Extensions.swift */; };
 		CD74ED6A20E829A500BD122B /* SetTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD74ED6920E829A500BD122B /* SetTimeViewController.swift */; };
-		CD74ED6C20E97F9C00BD122B /* ShowDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD74ED6B20E97F9C00BD122B /* ShowDetailViewController.swift */; };
+		CD74ED6C20E97F9C00BD122B /* EpisodeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD74ED6B20E97F9C00BD122B /* EpisodeDetailViewController.swift */; };
 		CD74ED6E20E9888100BD122B /* EpisodesTableViewController+UISearchBarDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD74ED6D20E9888100BD122B /* EpisodesTableViewController+UISearchBarDelegate.swift */; };
 		CD74EDCC20EC14A700BD122B /* TVMzeSampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD74EDCB20EC14A700BD122B /* TVMzeSampleTests.swift */; };
 		CD74EDD420EC14C200BD122B /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD74EDD320EC14C200BD122B /* APIClient.swift */; };
+		CDC6877B20EDA3280004E364 /* Show.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC6877A20EDA3280004E364 /* Show.swift */; };
+		CDC6877D20EDA3570004E364 /* JsonImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC6877C20EDA3570004E364 /* JsonImage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,12 +66,14 @@
 		CD74EA9620E31EBC00E10390 /* EpisodesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodesTableViewController.swift; sourceTree = "<group>"; };
 		CD74ED6720E8239C00BD122B /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		CD74ED6920E829A500BD122B /* SetTimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetTimeViewController.swift; sourceTree = "<group>"; };
-		CD74ED6B20E97F9C00BD122B /* ShowDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDetailViewController.swift; sourceTree = "<group>"; };
+		CD74ED6B20E97F9C00BD122B /* EpisodeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeDetailViewController.swift; sourceTree = "<group>"; };
 		CD74ED6D20E9888100BD122B /* EpisodesTableViewController+UISearchBarDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EpisodesTableViewController+UISearchBarDelegate.swift"; sourceTree = "<group>"; };
 		CD74EDC920EC14A700BD122B /* TVMzeSampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TVMzeSampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD74EDCB20EC14A700BD122B /* TVMzeSampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVMzeSampleTests.swift; sourceTree = "<group>"; };
 		CD74EDCD20EC14A700BD122B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CD74EDD320EC14C200BD122B /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		CDC6877A20EDA3280004E364 /* Show.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Show.swift; sourceTree = "<group>"; };
+		CDC6877C20EDA3570004E364 /* JsonImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonImage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -172,6 +176,8 @@
 			isa = PBXGroup;
 			children = (
 				CD16FED520E337B400A71E34 /* Episode.swift */,
+				CDC6877A20EDA3280004E364 /* Show.swift */,
+				CDC6877C20EDA3570004E364 /* JsonImage.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -181,7 +187,7 @@
 			children = (
 				CD16FED720E44E2500A71E34 /* EpisodeTableViewCell.swift */,
 				CD74EA9620E31EBC00E10390 /* EpisodesTableViewController.swift */,
-				CD74ED6B20E97F9C00BD122B /* ShowDetailViewController.swift */,
+				CD74ED6B20E97F9C00BD122B /* EpisodeDetailViewController.swift */,
 				CD74ED6D20E9888100BD122B /* EpisodesTableViewController+UISearchBarDelegate.swift */,
 			);
 			path = "Episodes-Shows";
@@ -353,10 +359,12 @@
 				CD16FED620E337B400A71E34 /* Episode.swift in Sources */,
 				CD16FED820E44E2500A71E34 /* EpisodeTableViewCell.swift in Sources */,
 				CD74EA9720E31EBC00E10390 /* EpisodesTableViewController.swift in Sources */,
+				CDC6877D20EDA3570004E364 /* JsonImage.swift in Sources */,
 				CD16FEDC20E6BC8500A71E34 /* UIColor+theme.swift in Sources */,
 				CD74EDD420EC14C200BD122B /* APIClient.swift in Sources */,
+				CDC6877B20EDA3280004E364 /* Show.swift in Sources */,
 				CD74EA6920E2B9D200E10390 /* AppDelegate.swift in Sources */,
-				CD74ED6C20E97F9C00BD122B /* ShowDetailViewController.swift in Sources */,
+				CD74ED6C20E97F9C00BD122B /* EpisodeDetailViewController.swift in Sources */,
 				CD16FEDA20E4506200A71E34 /* CustomImageView.swift in Sources */,
 				CD74ED6E20E9888100BD122B /* EpisodesTableViewController+UISearchBarDelegate.swift in Sources */,
 				CD74ED6820E8239C00BD122B /* Extensions.swift in Sources */,

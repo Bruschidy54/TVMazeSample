@@ -15,7 +15,6 @@ class EpisodesTableViewController: UITableViewController, SetTimeDelegate {
     var totalEpisodes: [Episode] = []
     var timeFilteredEpisodes: [Episode] = []
     var searchFilteredEpisodes: [Episode] = []
-    var searchActive = false
     var previousHeading = ""
     
     let searchingMessage = "Searching Shows"
@@ -24,16 +23,18 @@ class EpisodesTableViewController: UITableViewController, SetTimeDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
         setupUI()
         
         queryEpisodes()
         
         tableView.reloadData()
-        
     }
     
     func setTime(date: Date) {
+        
+        searchBar.text = ""
+        searchBar.endEditing(true)
+        
         timeFilteredEpisodes = totalEpisodes.filter { $0.airInterval?.contains(date) == true }
         
         let dateFormatter = DateFormatter()
@@ -75,27 +76,22 @@ class EpisodesTableViewController: UITableViewController, SetTimeDelegate {
     
     
     @objc private func handleSetTimeTapped() {
-        searchBar.endEditing(true)
-        searchBar.text = ""
-        searchActive = false
-        navigationItem.title = previousHeading
-        tableView.reloadData()
         let setTimeViewController = SetTimeViewController()
         setTimeViewController.delegate = self
-        setTimeViewController.modalPresentationStyle = .overCurrentContext
+        setTimeViewController.modalPresentationStyle = .formSheet
         present(setTimeViewController, animated: true, completion: nil)
+    }
+    
+    @objc private func dismissKeyboard() {
+        searchBar.endEditing(true)
     }
     
     
     
     private func queryEpisodes() {
         
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
         
-        let dateString = dateFormatter.string(from: Date())
-        
-        guard let url = URL(string: "http://api.tvmaze.com/schedule?country=US&date=\(dateString)") else { return }
+        guard let url = URL(string: apiUrlString) else { return }
         
         let session = URLSession(configuration: .default)
         let apiClient = APIClient(session: session)
@@ -127,23 +123,19 @@ class EpisodesTableViewController: UITableViewController, SetTimeDelegate {
         }
     }
     
-    @objc private func dismissKeyboard() {
-        searchBar.endEditing(true)
-    }
-    
-    
-    
     
     // MARK: - Table view data source
     
     
     override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         
+        let searchInactive = searchBar.text?.isEmpty ?? true
+        
         let label = UILabel()
-        if searchBar.text?.isEmpty == false {
-            label.text = "No matching shows or channels..."
-        } else {
+        if searchInactive {
             label.text = "No shows playing at this time..."
+        } else {
+            label.text = "No matching shows or channels..."
         }
         label.textColor = .white
         label.textAlignment = .center
@@ -152,15 +144,18 @@ class EpisodesTableViewController: UITableViewController, SetTimeDelegate {
     }
     
     override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return (timeFilteredEpisodes.count == 0 && !searchActive) || (searchFilteredEpisodes.count == 0 && searchActive) ? 150 : 0
+        let searchInactive = searchBar.text?.isEmpty ?? true
+        return (timeFilteredEpisodes.count == 0 && searchInactive) || (searchFilteredEpisodes.count == 0 && !searchInactive) ? 150 : 0
     }
     
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if searchBar.text?.isEmpty == false {
-            return searchFilteredEpisodes.count
-        } else {
+        let searchInactive = searchBar.text?.isEmpty ?? true
+        
+        if searchInactive {
             return timeFilteredEpisodes.count
+        } else {
+            return searchFilteredEpisodes.count
         }
     }
     
@@ -168,11 +163,13 @@ class EpisodesTableViewController: UITableViewController, SetTimeDelegate {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! EpisodeTableViewCell
         
-        if searchBar.text?.isEmpty == false {
-            let episode = searchFilteredEpisodes[indexPath.row]
+        let searchInactive = searchBar.text?.isEmpty ?? true
+        
+        if searchInactive {
+            let episode = timeFilteredEpisodes[indexPath.row]
             cell.episode = episode
         } else {
-            let episode = timeFilteredEpisodes[indexPath.row]
+            let episode = searchFilteredEpisodes[indexPath.row]
             cell.episode = episode
         }
         cell.selectionStyle = .none
@@ -199,7 +196,7 @@ class EpisodesTableViewController: UITableViewController, SetTimeDelegate {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowDetailSegue" {
-            let showDetailController = segue.destination as! ShowDetailViewController
+            let showDetailController = segue.destination as! EpisodeDetailViewController
             if let episode = (sender as! EpisodeTableViewCell).episode {
                 showDetailController.episode = episode
             }

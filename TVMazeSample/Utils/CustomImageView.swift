@@ -43,8 +43,11 @@ class CustomImageView: UIImageView {
         
         guard let url = URL(string: urlString) else { return }
         
-        URLSession.shared.dataTask(with: url) { (data, response, err) in
-            if let err = err {
+        let session = URLSession(configuration: .default)
+        let apiClient = APIClient(session: session)
+        
+        apiClient.get(url: url) { (data, error) in
+            if let err = error {
                 print("Failed to fetch post image:", err)
                 return
             }
@@ -63,6 +66,6 @@ class CustomImageView: UIImageView {
                 
                 self.image = photoImage
             }
-            }.resume()
+        }
     }
 }

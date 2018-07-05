@@ -18,6 +18,13 @@ protocol URLSessionDataTaskProtocol {
     func resume()
 }
 
+let apiUrlString: String = {
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "yyyy-MM-dd"
+    
+    let dateString = dateFormatter.string(from: Date())
+    return "http://api.tvmaze.com/schedule?country=US&date=\(dateString)"
+}()
 
 class APIClient {
     
