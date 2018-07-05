@@ -19,6 +19,7 @@ class EpisodeDetailViewController: UIViewController {
     @IBOutlet var showLanguageLabel: UILabel!
     @IBOutlet var showURLButton: UIButton!
     @IBOutlet var showDescriptionView: UITextView!
+    @IBOutlet var showDescriptionHeightConstraint: NSLayoutConstraint!
     
     @IBOutlet var episodeView: UIView!
     @IBOutlet var episodeImageView: CustomImageView!
@@ -103,7 +104,9 @@ class EpisodeDetailViewController: UIViewController {
         let showDescription = episode.show?.summary ?? ""
         showDescriptionView.text = showDescription
         
-        showDescriptionView.sizeToFit()
+        if showDescription.isEmpty {
+            showDescriptionHeightConstraint.constant = 0
+        }
     }
     
     private func displayEpisodeInformation() {
@@ -148,8 +151,6 @@ class EpisodeDetailViewController: UIViewController {
         let episodeDescription = episode.summary ?? ""
         episodeDescriptionView.text = episodeDescription
         
-        episodeDescriptionView.sizeToFit()
-
         if episodeDescription.isEmpty {
             episodeDescriptionHeightConstraint.constant = 0
         }
