@@ -22,6 +22,7 @@
 		CD74ED6E20E9888100BD122B /* EpisodesTableViewController+UISearchBarDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD74ED6D20E9888100BD122B /* EpisodesTableViewController+UISearchBarDelegate.swift */; };
 		CD74EDCC20EC14A700BD122B /* TVMzeSampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD74EDCB20EC14A700BD122B /* TVMzeSampleTests.swift */; };
 		CD74EDD420EC14C200BD122B /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD74EDD320EC14C200BD122B /* APIClient.swift */; };
+		CD8306982117DB0E00F363EE /* URLSessionMocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8306972117DB0E00F363EE /* URLSessionMocks.swift */; };
 		CDC6877B20EDA3280004E364 /* Show.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC6877A20EDA3280004E364 /* Show.swift */; };
 		CDC6877D20EDA3570004E364 /* JsonImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC6877C20EDA3570004E364 /* JsonImage.swift */; };
 /* End PBXBuildFile section */
@@ -72,6 +73,7 @@
 		CD74EDCB20EC14A700BD122B /* TVMzeSampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVMzeSampleTests.swift; sourceTree = "<group>"; };
 		CD74EDCD20EC14A700BD122B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CD74EDD320EC14C200BD122B /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		CD8306972117DB0E00F363EE /* URLSessionMocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionMocks.swift; sourceTree = "<group>"; };
 		CDC6877A20EDA3280004E364 /* Show.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Show.swift; sourceTree = "<group>"; };
 		CDC6877C20EDA3570004E364 /* JsonImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonImage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -115,6 +117,7 @@
 				CD16FEDB20E6BC8500A71E34 /* UIColor+theme.swift */,
 				CD74ED6720E8239C00BD122B /* Extensions.swift */,
 				CD74EDD320EC14C200BD122B /* APIClient.swift */,
+				CD8306972117DB0E00F363EE /* URLSessionMocks.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -365,6 +368,7 @@
 				CDC6877B20EDA3280004E364 /* Show.swift in Sources */,
 				CD74EA6920E2B9D200E10390 /* AppDelegate.swift in Sources */,
 				CD74ED6C20E97F9C00BD122B /* EpisodeDetailViewController.swift in Sources */,
+				CD8306982117DB0E00F363EE /* URLSessionMocks.swift in Sources */,
 				CD16FEDA20E4506200A71E34 /* CustomImageView.swift in Sources */,
 				CD74ED6E20E9888100BD122B /* EpisodesTableViewController+UISearchBarDelegate.swift in Sources */,
 				CD74ED6820E8239C00BD122B /* Extensions.swift in Sources */,

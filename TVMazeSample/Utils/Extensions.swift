@@ -39,3 +39,15 @@ extension UIView {
         }
     }
 }
+
+extension URLSession: URLSessionProtocol {
+    
+    func protocolDataTask(with request: URLRequest, completionHandler: @escaping URLSessionProtocol.DataTaskResult) -> URLSessionDataTaskProtocol {
+        return dataTask(with: request, completionHandler: completionHandler)
+        
+    }
+}
+
+extension URLSessionDataTask: URLSessionDataTaskProtocol {}
+
+

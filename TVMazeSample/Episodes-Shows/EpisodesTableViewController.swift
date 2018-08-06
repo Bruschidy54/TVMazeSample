@@ -25,7 +25,18 @@ class EpisodesTableViewController: UITableViewController, SetTimeDelegate {
         
         setupUI()
         
-        queryEpisodes()
+        APIClient.shared.queryEpisodes(callback: { (episodes, error) in
+            if let err = error {
+                let alertController = UIAlertController(title: "Error retrieving shows. Please try again later.", message: err.localizedDescription, preferredStyle: .alert)
+                
+                let cancelAction = UIAlertAction(title: "OK", style: .cancel) { (action) in
+                }
+                alertController.addAction(cancelAction)
+                self.present(alertController, animated: true)
+            }
+            self.totalEpisodes = episodes
+           self.timeFilteredEpisodes = self.totalEpisodes.filter { $0.airInterval?.contains(Date()) == true }
+        })
         
         tableView.reloadData()
     }
@@ -47,7 +58,6 @@ class EpisodesTableViewController: UITableViewController, SetTimeDelegate {
         navigationItem.title = "Playing at \(dateString)"
         
         tableView.reloadData()
-        tableView.setNeedsLayout()
         tableView.layoutIfNeeded()
         tableView.reloadData()
         
@@ -86,42 +96,6 @@ class EpisodesTableViewController: UITableViewController, SetTimeDelegate {
         searchBar.endEditing(true)
     }
     
-    
-    
-    private func queryEpisodes() {
-        
-        
-        guard let url = URL(string: apiUrlString) else { return }
-        
-        let session = URLSession(configuration: .default)
-        let apiClient = APIClient(session: session)
-        
-        apiClient.get(url: url) { (data, error) in
-            if let err = error {
-                print("Error retrieving shows from TVMaze", err)
-                let alertController = UIAlertController(title: "Error retrieving shows. Please try again later.", message: err.localizedDescription, preferredStyle: .alert)
-                
-                let cancelAction = UIAlertAction(title: "OK", style: .cancel) { (action) in
-                }
-                alertController.addAction(cancelAction)
-                self.present(alertController, animated: true)
-                return
-            }
-            
-            guard let jsonData = data else { return }
-            
-            do {
-                let decoder = JSONDecoder()
-                self.totalEpisodes = try decoder.decode([Episode].self, from: jsonData)
-                self.timeFilteredEpisodes = self.totalEpisodes.filter { $0.airInterval?.contains(Date()) == true }
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
-                }
-            } catch let err {
-                print("Error decoding episodes from JSON", err)
-            }
-        }
-    }
     
     
     // MARK: - Table view data source

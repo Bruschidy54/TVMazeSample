@@ -28,6 +28,8 @@ let apiUrlString: String = {
 
 class APIClient {
     
+    static let shared = APIClient.init(session: URLSession(configuration: .default))
+    
     typealias completeClosure = ( _ data: Data?, _ error: Error?)->Void
     
     private let session: URLSessionProtocol
@@ -46,48 +48,33 @@ class APIClient {
         task.resume()
     }
     
-}
-
-//MARK: Conform the protocol
-extension URLSession: URLSessionProtocol {
-    
-    func protocolDataTask(with request: URLRequest, completionHandler: @escaping URLSessionProtocol.DataTaskResult) -> URLSessionDataTaskProtocol {
-        return dataTask(with: request, completionHandler: completionHandler)
+    func queryEpisodes(callback: @escaping (_ episodes: [Episode], _ error: Error?) -> Void) {
+        
+        guard let url = URL(string: apiUrlString) else { return }
+        
+        let session = URLSession(configuration: .default)
+        let apiClient = APIClient(session: session)
+        var queryError: Error? = nil
+        
+        apiClient.get(url: url) { (data, error) in
+            if let err = error {
+                print("Error retrieving shows from TVMaze", err)
+                queryError = err
+                
+            }
+            
+            guard let jsonData = data else { return }
+            
+            do {
+                let decoder = JSONDecoder()
+                let totalEpisodes = try decoder.decode([Episode].self, from: jsonData)
+                callback(totalEpisodes, queryError)
+            } catch let err {
+                print("Error decoding episodes from JSON", err)
+            }
+        }
         
     }
-}
-
-extension URLSessionDataTask: URLSessionDataTaskProtocol {}
-
-
-//MARK: Mocks
-class MockURLSession: URLSessionProtocol {
-    
-    
-    
-    var nextDataTask = MockURLSessionDataTask()
-    var nextData: Data?
-    var nextError: Error?
-    
-    private (set) var lastURL: URL?
-    
-    func successHttpURLResponse(request: URLRequest) -> URLResponse {
-        return HTTPURLResponse(url: request.url!, statusCode: 200, httpVersion: "HTTP/1.1", headerFields: nil)!
-    }
-    
-    func protocolDataTask(with request: URLRequest, completionHandler: @escaping URLSessionProtocol.DataTaskResult) -> URLSessionDataTaskProtocol {
-        lastURL = request.url
-        
-        completionHandler(nextData, successHttpURLResponse(request: request), nextError)
-        return nextDataTask
-    }
     
 }
 
-class MockURLSessionDataTask: URLSessionDataTaskProtocol {
-    private (set) var resumeWasCalled = false
-    
-    func resume() {
-        resumeWasCalled = true
-    }
-}
